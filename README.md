@@ -6,4 +6,4 @@ No databases
 No user authentication
 No special web techniologies
 
-Just host on your very own web server or play on GitHub Pages at [https://kamaranl.github.io/rofl/]
+Just host on your very own web server or play on GitHub Pages at <https://kamaranl.github.io/rofl/>
