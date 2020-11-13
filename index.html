@@ -67,65 +67,6 @@
           </div>
         </div>
       </div>
-      <!-- game select/add players -->
-      <div id="form-pregame" class="overlay overlay-block">
-        <div class="overlay-content">
-          <form onsubmit="return false">
-            <div class="card-header">
-              <h3>Game Selection</h3>
-            </div>
-            <div class="card-body text-left">
-              <div class="form-group">
-                <div class="d-flex justify-content-center">
-                  <div class="custom-control custom-radio custom-control-inline">
-                    <input
-                      id="ring-of-fire-lite"
-                      type="radio"
-                      name="customRadio"
-                      class="custom-control-input"
-                      onclick="actions.hide('add-players');actions.hide('button-reset-players');"
-                      checked
-                    />
-                    <label class="custom-control-label" for="ring-of-fire-lite">Ring of Fire Lite</label>
-                  </div>
-                  <div class="custom-control custom-radio custom-control-inline">
-                    <input
-                      id="tip-it-back"
-                      type="radio"
-                      name="customRadio"
-                      class="custom-control-input"
-                      onclick="actions.show('add-players');actions.show('button-reset-players');"
-                    />
-                    <label class="custom-control-label" for="tip-it-back">Tip It Back</label>
-                  </div>
-                </div>
-                <small id="game-validate" class="validate"></small>
-              </div>
-            </div>
-            <div id="add-players" style="display: none">
-              <div class="card-header card-footer">
-                <h3>Add Players</h3>
-              </div>
-              <div class="card-body text-left">
-                  <div class="form-group d-flex justify-content-center px-3">
-                    <input id="player-name" type="text" class="form-control" placeholder="Enter player's name" style="min-height: 50px" />
-                    &nbsp;
-                    <button type="button" class="btn btn-success btn-touch-sm" onclick="player.add();">&plus;</button>
-                  </div>
-                  <small id="player-validate" class="validate"></small>
-                <h5><u>Players:</u></h5>
-                <small id="player-list">No players have been added yet!</small>
-              </div>
-            </div>
-            <div class="d-flex justify-content-center mb-4">
-              <button id="button-reset-players" type="button" class="btn btn-danger btn-touch m-2" onclick="player.reset();">Reset</button>
-              <button type="button" class="btn btn-primary btn-touch m-2" onclick="game.submitPregame();">Submit</button>
-            </div>
-          </form>
-        </div>
-      </div>
-
-
     </div>
 
     <script src="js/main.js"></script>

@@ -99,66 +99,6 @@ const cards = {
       return Object.entries(cards.ringOfFireLite.values)[randomIndex];
     },
   },
-  tipItBack: {
-    challenges: {
-      easy: [
-        "Spell your name backwards without making a mistake",
-        "Stand on one foot until it is your turn again",
-        "Have the person to your right give you a category that you must name 5 things to fit in that category",
-        "Hug the player directly across from you and whisper in his/her ear that he/she has a sweet ass",
-        "Gargle with some water while attempting to sign a nursery rhyme",
-        "",
-      ],
-      hard: [
-        "Swap drinks with the player to your left until it is your turn again",
-        "Look at the last person you messaged in your phone, text that person and let him/her know you need a to borrow: some bleach, a shovel, and some trashbags. Do not text them back for the rest of the night",
-        "Read the last 5 messages of your most recent text conversation aloud in chronological order. Impersonate the voice of the other person, if any",
-        "Have the group come up with a challenge you must complete",
-      ],
-      spicy: [
-        "Swap shirts with the player directly across from you",
-        "Text your ex and tell him/her that you just thought about them when you took the trash out",
-        "Have the rest of the players come up with a word or phrase you are banned from saying for the rest of the game. Each time you say the word, you must remove an article of clothing",
-        "Everyone gets to smack your ass",
-        "Have the group come up with a challenge you must complete, involving you and the player to your left",
-        "Go without pants for one round",
-        "The player to your right gets to give you a titty twister",
-        "",
-      ],
-    },
-    pickCard: function (diff = "") {
-      let card = {},
-        random = {};
-      random.easy = Math.floor(Math.random() * Object.keys(cards.tipItBack.challenges.easy).length);
-      random.hard = Math.floor(Math.random() * Object.keys(cards.tipItBack.challenges.hard).length);
-      random.spicy = Math.floor(Math.random() * Object.keys(cards.tipItBack.challenges.spicy).length);
-
-      if (diff == "easy") {
-        card[0] = Math.floor(Math.random() * (4 - 1) + 1);
-        card[1] = cards.tipItBack.challenges.easy[random.easy];
-      } else if (diff == "hard") {
-        card[0] = Math.floor(Math.random() * (7 - 5) + 5);
-        card[1] = cards.tipItBack.challenges.hard[random.hard];
-      } else if (diff == "spicy") {
-        card[0] = Math.floor(Math.random() * (10 - 8) + 8);
-        card[1] = cards.tipItBack.challenges.spicy[random.spicy];
-      } else {
-        card[0] = cards.tipItBack.values();
-        if (card[0] >= 1 && card[0] <= 4) {
-          card[1] = cards.tipItBack.challenges.easy[random.easy];
-        } else if (card[0] >= 5 && card[0] <= 7) {
-          card[1] = cards.tipItBack.challenges.hard[random.hard];
-        } else if (card[0] >= 8 && card[0] <= 10) {
-          card[1] = cards.tipItBack.challenges.spicy[random.spicy];
-        }
-      }
-
-      return card;
-    },
-    values: function () {
-      return Math.floor(Math.random() * 10 + 1);
-    },
-  },
 };
 
 const data = {
@@ -176,9 +116,6 @@ const data = {
 };
 
 const game = {
-  rofl: document.getElementById("ring-of-fire-lite"),
-  selection: "",
-  tib: document.getElementById("tip-it-back"),
   checkScreenSize: function () {
     let bod, small;
 
@@ -200,12 +137,8 @@ const game = {
       game.updateScore();
       game.turn();
     } else if (response == "no") {
-      // update background
-      // game.something()
       game.turn();
     }
-
-    actions.popup.close("popup-confirm-challenge");
   },
   current: () => {
     return data.storage.get("current");
