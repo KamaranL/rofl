@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" href="inc/fontawesome-free-5.14.0-web/css/all.css" />
+    <link rel="stylesheet" href="inc/bootstrap-4.5.2-dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/main.css" />
+
+    <title>Ring of Fire! (Lite)</title>
+  </head>
+
+  <body>
+    <!-- main app -->
+    <div id="app">
+      <div id="popup-overlay" class="disabled"></div>
+      <!-- game -->
+      <div id="game" class="container justify-content-center">
+        <div class="row">
+          <div class="col">
+            <div class="d-flex justify-content-center">
+              <div id="card" class="card p-2">
+                <p id="card-value" class="h3 font-weight-bold ml-1">
+                  <!-- dummy data: card value -->
+                </p>
+                <div class="d-flex align-items-center justify-content-center mt-2">
+                  <div id="card-description">
+                    <!-- dummy data: description of card -->
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row mt-4">
+          <div class="col">
+            <div class="d-flex align-items-middle justify-content-center">
+              <div class="text-center text-nowrap">
+                <div class="col">
+                  <button
+                    id="card-player"
+                    type="button"
+                    class="btn btn-success"
+                    style="min-width: 165px; min-height: 75px"
+                    onclick="actions.overlay.openTop('stats-game');"
+                  >
+                    <!-- dummy data: whose turn it is -->
+                  </button>
+                </div>
+                <br />
+                <button type="button" class="btn btn-secondary btn-touch m-2" onclick="actions.overlay.openSide('form-settings');">
+                  <i class="fas fa-cogs"></i>
+                </button>
+                <div class="popup">
+                  <span id="popup-confirm-challenge" class="popuptext">
+                    <p class="px-1 text-wrap">Was this challenge completed?</p>
+                    <button class="btn btn-success btn-touch-sm mx-2" onclick="game.confirmChallenge(this.value)" value="yes">Yes</button>
+                    <button class="btn btn-danger btn-touch-sm mx-2" onclick="game.confirmChallenge(this.value)" value="no">No</button>
+                  </span>
+                  <button id="next-button" type="button" class="btn btn-primary btn-touch m-2" onclick="game.next();">
+                    <i class="fas fa-arrow-right"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- game select/add players -->
+      <div id="form-pregame" class="overlay overlay-block">
+        <div class="overlay-content">
+          <form onsubmit="return false">
+            <div class="card-header">
+              <h3>Game Selection</h3>
+            </div>
+            <div class="card-body text-left">
+              <div class="form-group">
+                <div class="d-flex justify-content-center">
+                  <div class="custom-control custom-radio custom-control-inline">
+                    <input
+                      id="ring-of-fire-lite"
+                      type="radio"
+                      name="customRadio"
+                      class="custom-control-input"
+                      onclick="actions.hide('add-players');actions.hide('button-reset-players');"
+                      checked
+                    />
+                    <label class="custom-control-label" for="ring-of-fire-lite">Ring of Fire Lite</label>
+                  </div>
+                  <div class="custom-control custom-radio custom-control-inline">
+                    <input
+                      id="tip-it-back"
+                      type="radio"
+                      name="customRadio"
+                      class="custom-control-input"
+                      onclick="actions.show('add-players');actions.show('button-reset-players');"
+                    />
+                    <label class="custom-control-label" for="tip-it-back">Tip It Back</label>
+                  </div>
+                </div>
+                <small id="game-validate" class="validate"></small>
+              </div>
+            </div>
+            <div id="add-players" style="display: none">
+              <div class="card-header card-footer">
+                <h3>Add Players</h3>
+              </div>
+              <div class="card-body text-left">
+                  <div class="form-group d-flex justify-content-center px-3">
+                    <input id="player-name" type="text" class="form-control" placeholder="Enter player's name" style="min-height: 50px" />
+                    &nbsp;
+                    <button type="button" class="btn btn-success btn-touch-sm" onclick="player.add();">&plus;</button>
+                  </div>
+                  <small id="player-validate" class="validate"></small>
+                <h5><u>Players:</u></h5>
+                <small id="player-list">No players have been added yet!</small>
+              </div>
+            </div>
+            <div class="d-flex justify-content-center mb-4">
+              <button id="button-reset-players" type="button" class="btn btn-danger btn-touch m-2" onclick="player.reset();">Reset</button>
+              <button type="button" class="btn btn-primary btn-touch m-2" onclick="game.submitPregame();">Submit</button>
+            </div>
+          </form>
+        </div>
+      </div>
+      <!-- settings -->
+      <div id="form-settings" class="overlay overlay-side">
+        <div class="overlay-content">
+          <form onsubmit="return false">
+            <div class="card-header">
+              <h3>Settings</h3>
+            </div>
+            <div class="card-body w-100">
+              <button type="button" class="btn btn-dark btn-touch w-100" onclick="game.menu();">Menu</button>
+              <div id="difficulty-setting" class="text-left form-group mt-2">
+                <label for="difficulty" class="h4">Difficulty:</label>
+                <select id="difficulty" class="form-control form-control-lg">
+                  <option value="easy">Easy</option>
+                  <option value="normal" selected>Normal</option>
+                  <option value="hard">Hard</option>
+                  <option value="spicy">Spicy</option>
+                </select>
+              </div>
+              <div id="theme-setting" class="text-left form-group mt-2">
+                <label for="theme" class="h4">Theme:</label>
+                <select id="theme" class="form-control form-control-lg">
+                  <option value="light" selected>Light</option>
+                  <option value="dark">Dark</option>
+                </select>
+              </div>
+              <div class="mt-4 text-nowrap">
+                <button type="button" class="btn btn-secondary btn-touch m-2" onclick="actions.overlay.closeSide('form-settings');">
+                  Close
+                </button>
+                <button type="button" class="btn btn-primary btn-touch m-2" onclick="">Save</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+      <!--
+        Work in Progress :
+      -->
+      <!-- game stats -->
+      <div id="stats-game" class="overlay overlay-top">
+        <div class="overlay-content h-100">
+          <div class="card-header">
+            <h3>Stats</h3>
+          </div>
+          <div class="card-body w-100">
+            <div id="player-stats" class="mb-2">
+              [ PLAYER STATS ]
+              <!-- dummy data: player stats -->
+            </div>
+            <div id="player-stats" class="mb-2">
+              [ GAME STATS ]
+              <!-- dummy data: game stats -->
+            </div>
+            <button type="button" class="btn btn-secondary btn-touch w-100 mt-2" onclick="actions.overlay.closeTop('stats-game');">
+              Close
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="js/main.js"></script>
+    <script>
+      game.load();
+    </script>
+  </body>
+</html>

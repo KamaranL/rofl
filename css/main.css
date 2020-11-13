@@ -1,0 +1,125 @@
+html,
+body {
+  height: 100%;
+}
+
+#app {
+  height: 100%;
+  padding: 1.5rem;
+  touch-action: none;
+}
+
+.btn-touch {
+  min-height: 75px;
+  min-width: 75px;
+}
+
+.btn-touch-sm {
+  min-height: 50px;
+  min-width: 50px;
+}
+
+#card {
+  min-height: 300px;
+  width: 235px;
+}
+
+.overlay {
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  background-color: rgba(245, 245, 245, 0.975);
+  overflow-x: hidden;
+  transition: 0.5s;
+}
+
+.overlay-side {
+  height: 100%;
+  width: 0;
+  border-right: solid 1px black;
+}
+
+.overlay-top {
+  height: 0;
+  width: 100%;
+  border-bottom: solid 1px black;
+}
+
+.overlay-block {
+  height: 100%;
+  width: 100%;
+  display: none;
+  border: solid 1px black;
+}
+
+.overlay-content {
+  position: relative;
+  width: 100%;
+  text-align: center;
+}
+
+#popup-overlay {
+  position: fixed;
+  display: none;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 3;
+  background-color: rgba(255, 255, 255, 0.75);
+  overflow-x: hidden;
+  cursor: none;
+  pointer-events: none;
+  user-select: none;
+  transition: 0.5s;
+}
+
+.popup {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+  user-select: none;
+}
+
+.popup .popuptext {
+  visibility: hidden;
+  width: 75vw;
+  background-color: #555;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 8px 0;
+  position: absolute;
+  z-index: 5;
+  bottom: 105%;
+  transform: translate(-50.5%, 0);
+}
+
+.popup .popuptext::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #555 transparent transparent transparent;
+}
+
+.popup .show {
+  visibility: visible;
+  animation: fadeIn 1s;
+}
+
+.validate {
+  color: red;
+  font-weight: 700;
+}
+
+.validate span {
+  opacity: 1;
+  transition: 0.75s opacity linear 0s;
+}
