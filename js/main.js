@@ -155,6 +155,16 @@ const game = {
 
     return card;
   },
+  reset: function () {
+    if (
+      confirm(
+        "Resetting the game will clear the amount of kings that have been played this round.\r\n\r\nAre you sure you want to do this?"
+      )
+    ) {
+      localStorage.clear();
+      game.turn();
+    }
+  },
   turn: function () {
     let value = game.playCard()[0];
 
