@@ -34,12 +34,36 @@
         min-height: 300px;
         width: 235px;
       }
+
+      #card-value {
+        font-size: 1.75em;
+        font-weight: bolder;
+        margin-left: 0.25em;
+      }
+
+      .header-value {
+        font-size: 1.25em;
+        font-weight: bolder;
+      }
+
       /* Tablets */
-      @media screen and (max-width: 768px ) {
+      @media screen and (min-width: 768px ) {
         #card {
           /* min-height: */
           width: 748px;
         }
+
+        #card-value {
+          font-size: 3.5em;
+          font-weight: bolder;
+          margin-left: 0.25em;
+        }
+
+        .header-value {
+          font-size: 1.25em;
+          font-weight: bolder;
+        }
+
       }
     </style>
   </head>
@@ -54,7 +78,7 @@
           <div class="col">
             <div class="d-flex justify-content-center">
               <div id="card" class="card p-2">
-                <p id="card-value" class="h3 font-weight-bold ml-1">
+                <p id="card-value">
                   <!-- dummy data: card value -->
                 </p>
                 <div class="d-flex align-items-center justify-content-center mt-2">
