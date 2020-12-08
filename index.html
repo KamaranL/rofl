@@ -32,7 +32,7 @@
 
       #card {
         min-height: 300px;
-        width: 235px;
+        width: 236px;
       }
 
       #card-value {
@@ -47,23 +47,49 @@
       }
 
       /* Tablets */
-      @media screen and (min-width: 768px ) {
+      @media screen and (min-width: 760px ) {
         #card {
-          /* min-height: */
-          width: 748px;
+          min-height: 824px;
+          width: 646px;
         }
 
         #card-value {
-          font-size: 3.5em;
+          font-size: 5.5em;
           font-weight: bolder;
           margin-left: 0.25em;
         }
 
         .header-value {
-          font-size: 1.25em;
+          font-size: 1.5em;
           font-weight: bolder;
         }
 
+        #card-description {
+          font-size: 2.75em;
+        }
+      }
+
+      /* Desktop */
+      @media screen and (min-width: 1020px) {
+        #card {
+          min-height: 824px;
+          width: 646px;
+        }
+
+        #card-value {
+          font-size: 5.5em;
+          font-weight: bolder;
+          margin-left: 0.25em;
+        }
+
+        .header-value {
+          font-size: 1.5em;
+          font-weight: bolder;
+        }
+
+        #card-description {
+          font-size: 2.75em;
+        }
       }
     </style>
   </head>
