@@ -1,6 +1,6 @@
 # Ring of Fire! (Lite)
 
-The very popular Ring of Fire drinking game (+ a bonus game in beta) built in a lightweight web application.
+The very popular Ring of Fire drinking game built in a lightweight web application.
 
 - No databases
 - No user authentication
